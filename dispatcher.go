@@ -1,6 +1,8 @@
 package main
 
 import (
+	"strings"
+
 	"github.com/bwmarrin/discordgo"
 )
 
@@ -12,6 +14,14 @@ func messageHandler(session *discordgo.Session, message *discordgo.MessageCreate
 	}
 
 	// Grab Command
+	contentSplit := strings.Split(message.Content, ",")
+	command := contentSplit[0]
 
-	// If Valid - DISPATCH!
+	// Check and Dispatch
+	switch command {
+	case ".ping":
+		handlePing(session, message)
+	default:
+		return
+	}
 }

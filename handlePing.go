@@ -4,6 +4,6 @@ import (
 	"github.com/bwmarrin/discordgo"
 )
 
-func handlePing(s *discordgo.Session, m *discordgo.MessageCreate) {
-	_, _ = s.ChannelMessageSend(m.ChannelID, "Pong!")
+func handlePing(session *discordgo.Session, message *discordgo.MessageCreate) {
+	_, _ = session.ChannelMessageSend(message.ChannelID, "Pong!")
 }
